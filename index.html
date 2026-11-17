@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Zishuo Lin — MSc student at Imperial College London. Research in fluid mechanics, flow reconstruction, data assimilation, and scientific machine learning.">
+  <meta name="theme-color" content="#183f45">
+  <title>Zishuo Lin | Fluid Mechanics & Scientific Computing</title>
+  <style>
+/* Zishuo Lin — a small, dependency-free academic homepage. */
+:root{--ink:#182e32;--muted:#536568;--accent:#245d64;--line:#dce4e2;--paper:#fdfdfb;--tint:#f0f5f3;--white:#fff;--serif:Georgia,"Times New Roman",serif;--sans:Inter,"Segoe UI",Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;text-underline-offset:4px}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:3px solid #b26a2c;outline-offset:5px;border-radius:2px}
+h1,h2,h3,h4,p{margin:0}
+h1,h2{font-family:var(--serif);font-weight:400;line-height:1.1;letter-spacing:-.035em}
+h1{font-size:clamp(48px,6vw,74px);margin:13px 0 17px}
+h2{font-size:clamp(32px,4vw,43px)}
+h3{font-size:22px;line-height:1.35;font-weight:600;letter-spacing:-.025em}
+h4{font-size:16px;line-height:1.6;font-weight:600}
+p+p{margin-top:12px}
+ul,ol{padding-left:21px}
+.section-wrap{width:min(1080px,calc(100% - 80px));margin-inline:auto}
+.skip-link{position:absolute;left:20px;top:-80px;z-index:100;background:var(--ink);color:white;padding:10px 18px}
+.skip-link:focus{top:12px}
+.site-header{background:var(--paper);border-bottom:1px solid var(--line)}
+.header-inner{width:min(1080px,calc(100% - 80px));min-height:83px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.wordmark{font-family:var(--serif);font-size:24px;font-weight:600;letter-spacing:-.045em;color:var(--ink);white-space:nowrap}
+.wordmark span{color:var(--accent)}
+nav{display:flex;gap:31px;align-items:center;font-size:14px}
+nav a{color:var(--muted)}
+nav a:hover{color:var(--accent)}
+nav .nav-cv{font:inherit;background:transparent;cursor:pointer;border:1px solid #b8c9c5;border-radius:4px;padding:6px 13px;color:var(--ink)}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:76px;padding-block:78px 72px;align-items:start}
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;line-height:1.6;color:var(--accent)}
+.affiliation{font-size:17px;color:var(--muted);margin-bottom:26px}
+.intro{font-family:var(--serif);font-size:26px;line-height:1.48;letter-spacing:-.02em;max-width:660px}
+.bio{font-size:15px;color:var(--muted);line-height:1.85;max-width:640px;margin-top:18px}
+.profile-links{display:flex;gap:23px;align-items:center;flex-wrap:wrap;margin-top:29px}
+.button{display:inline-flex;align-items:center;gap:19px;padding:10px 16px;border-radius:4px;font-size:13px;font-weight:600}
+.primary{background:var(--ink);color:var(--white);border:1px solid var(--ink)}
+.primary:hover{background:var(--accent);text-decoration:none}
+.print-cv{border:0;padding:0;background:none;font-family:inherit;cursor:pointer;color:var(--accent)}
+.print-cv:hover{text-decoration:underline;text-underline-offset:4px}
+.text-link{font-size:13px;font-weight:500}
+.focus-panel{border-left:1px solid var(--line);padding-left:31px;margin-top:6px}
+.monogram{font-family:var(--serif);font-size:62px;line-height:1.1;letter-spacing:-.07em;color:#8da9a3;margin-bottom:26px}
+.monogram span{color:var(--ink)}
+.focus-panel ul{list-style:none;padding:0;margin:15px 0 21px;font-size:13px;color:var(--muted)}
+.focus-panel li{padding:7px 0;border-bottom:1px solid #e7ece9}
+.focus-panel li:last-child{border:0}
+.location{font-size:11px;color:var(--muted)}
+.location span{font-size:7px;color:#718b78;vertical-align:2px;padding-right:6px}
+.content-section{border-top:1px solid var(--line);padding-block:49px 56px}
+.section-heading{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:31px}
+.section-heading .eyebrow{margin-bottom:8px}
+.section-heading>p{font-size:13px;color:var(--muted);text-align:right;max-width:300px;padding-bottom:5px}
+.research-item{display:grid;grid-template-columns:38px 1fr;gap:21px;padding:29px 0;border-bottom:1px solid var(--line)}
+.research-item:last-child{border-bottom:0;padding-bottom:0}
+.research-item.featured{background:var(--tint);border:1px solid #d9e5e0;border-radius:6px;padding:29px 26px;margin-bottom:3px}
+.research-index{font-family:var(--serif);color:#6d8b83;font-size:24px;line-height:1.2;padding-top:2px}
+.research-topline{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:11px}
+.tag{color:var(--accent);text-transform:uppercase;font-size:10px;font-weight:700;letter-spacing:.1em}
+.date{font-size:12px;color:var(--muted);white-space:nowrap}
+.institution{font-size:12px;color:var(--muted)}
+.research-context{font-size:12px;color:var(--muted);margin-top:7px;margin-bottom:16px}
+.research-body>p:not(.research-context):not(.advisor){font-size:14px;line-height:1.8;margin-top:14px}
+.contributions{font-size:14px;line-height:1.85;margin-block:12px}
+.contributions li{padding-left:2px;margin:3px 0}
+.advisor{font-size:12px;color:var(--muted);line-height:1.75;margin-top:15px}
+.topic-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.topic-list span{font-size:10px;color:#40645c;border:1px solid #cfddd6;border-radius:3px;padding:3px 8px}
+.inline-link{display:inline-block;font-size:12px;font-weight:600;margin-top:17px}
+.group-label{font-size:11px;text-transform:uppercase;letter-spacing:.115em;font-weight:700;color:var(--muted);margin:28px 0 14px}
+.publication-list{list-style:none;padding:0;margin:0}
+.publication-list li{display:flex;align-items:flex-start;justify-content:space-between;gap:26px;padding:19px 0;border-bottom:1px solid #e6eae8;scroll-margin-top:28px}
+.publication-list li:last-child{border-bottom:0}
+.publication-copy{min-width:0}
+.publication-copy h4{max-width:800px;font-size:15px}
+.publication-copy p{font-size:12px;color:var(--muted);margin-top:5px}
+.publication-copy strong{color:var(--ink);font-weight:600}
+.publication-copy .journal{font-style:italic;color:var(--accent);margin-top:3px}
+.status{display:inline-block;flex-shrink:0;font-size:10px;line-height:1.5;border:1px solid #d8dfdc;border-radius:3px;padding:4px 7px;color:#55665e;background:#f5f7f5;white-space:nowrap;margin-top:3px}
+.accepted{background:#edf4eb;color:#426142;border-color:#d6e3d0}
+.published{background:#ebf1f3;color:#3a5f71;border-color:#d3e1e7}
+.background-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.background-grid .group-label:first-child{margin-top:0}
+.education-item{padding-bottom:22px}
+.education-item .date{margin-bottom:4px}
+.education-item p:last-child{font-size:13px;color:var(--muted);margin-top:4px;max-width:400px}
+.skills-list{font-size:12px;margin:0}
+.skills-list>div{display:grid;grid-template-columns:94px 1fr;gap:12px;padding-block:8px;border-bottom:1px solid #e8ece8}
+.skills-list dt{font-weight:600;color:var(--ink)}
+.skills-list dd{margin:0;color:var(--muted)}
+.conference{border-left:2px solid #9ab3a7;padding-left:19px}
+.conference .research-topline{flex-wrap:wrap}
+.conference .institution{font-weight:600;color:var(--accent)}
+.conference h4{font-size:14px}
+.conference p{font-size:12px;color:var(--muted);margin-top:9px}
+.compact-list{list-style:none;margin:0;padding:0;font-size:12px}
+.compact-list li{margin-bottom:13px}
+.compact-list strong{display:block;font-weight:500}
+.compact-list span{display:block;color:var(--muted);margin-top:2px}
+.contact{margin-top:5px;border-top:1px solid var(--line);padding-block:47px 50px;display:flex;justify-content:space-between;gap:32px;align-items:center}
+.contact h2{font-size:32px;margin-top:8px}
+.contact p:last-child{font-size:13px;color:var(--muted);margin-top:12px}
+.contact-email{font-size:14px;overflow-wrap:anywhere;flex-shrink:0}
+.site-footer{padding-block:20px 30px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px}
+.site-footer p+p{margin:0}
+.site-footer a{color:var(--muted)}
+sup{font-size:.65em}
+@media(min-width:1400px){.hero{padding-top:87px}}
+@media(max-width:900px){.hero{gap:34px;grid-template-columns:minmax(0,1fr) 220px}.focus-panel{padding-left:24px}.profile-links{gap:17px}.background-grid{gap:38px}.contact{align-items:flex-start;flex-direction:column;gap:24px}}
+@media(max-width:680px){
+html{scroll-padding-top:30px}
+.section-wrap,.header-inner{width:calc(100% - 40px)}
+.header-inner{min-height:76px;align-items:center;gap:10px}
+.wordmark{font-size:20px}
+nav{gap:13px;font-size:11px}
+nav .nav-cv{padding:4px 7px}
+nav a[href="#background"]{display:none}
+.hero{display:block;padding-block:44px}
+h1{font-size:53px;margin-block:12px}
+.affiliation{font-size:14px;margin-bottom:22px}
+.intro{font-size:23px}
+.bio{font-size:14px}
+.hero .eyebrow{font-size:10px}
+.profile-links{gap:19px;margin-top:24px}
+.button{font-size:12px}
+.focus-panel{margin-top:32px;border-left:0;border-top:1px solid var(--line);padding:23px 0 0}
+.monogram{display:none}
+.focus-panel ul{display:grid;grid-template-columns:1fr 1fr;gap:5px 22px;margin-block:10px}
+.focus-panel li{font-size:11px;border:0;padding:4px 0}
+.focus-panel .location{margin-top:12px}
+.content-section{padding-block:34px}
+.section-heading{display:block;margin-bottom:23px}
+.section-heading>p{text-align:left;margin-top:13px}
+h2{font-size:34px}
+.research-item{grid-template-columns:23px 1fr;gap:12px;padding-block:26px}
+.research-item.featured{padding:22px 16px 22px 13px;gap:10px}
+.research-index{font-size:20px}
+h3{font-size:19px}
+.research-topline{align-items:flex-start;gap:8px}
+.research-topline .institution{font-size:10px}
+.date{font-size:11px}
+.research-context{font-size:11px}
+.contributions,.research-body>p:not(.research-context):not(.advisor){font-size:13px}
+.topic-list span{font-size:9px}
+.publication-list li{gap:10px;flex-direction:column;padding-block:16px}
+.publication-copy h4{font-size:14px}
+.publication-copy p{font-size:11px}
+.status{font-size:9px}
+.background-grid{grid-template-columns:1fr;gap:30px}
+.contact h2{font-size:30px}
+.contact-email{font-size:13px;flex-shrink:1}
+.site-footer{flex-wrap:wrap;font-size:10px;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(max-width:380px){.header-inner{flex-wrap:wrap;padding-block:13px;gap:10px}nav{width:100%;justify-content:space-between}}
+@media print{
+body{background:#fff;font-size:10pt;color:#000}
+.section-wrap,.header-inner{width:100%}
+.site-header,.skip-link,.profile-links,.focus-panel,.contact,.site-footer,.inline-link{display:none}
+.hero{display:block;padding:0 0 20px}
+h1{font-size:32pt}
+.intro{font-size:16pt}
+.bio,.affiliation{font-size:10pt}
+.content-section{padding:18px 0}
+h2{font-size:22pt}
+.section-heading{margin-bottom:12px}
+.section-heading>p{display:none}
+.research-item,.research-item.featured{padding:12px;border-radius:0}
+.research-body{break-inside:avoid}
+.publication-list li{break-inside:avoid}
+.background-grid{gap:30px}
+a{color:inherit}
+}
+
+
+/* EDIT: Images and research materials are ordinary files beside index.html. */
+.profile-photo{display:block;width:196px;max-width:100%;height:auto;border-radius:5px;border:1px solid var(--line);margin:0 auto 18px}
+.academic-links{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:0 0 27px}
+.academic-links a{font-size:11px;line-height:1.5;padding:5px 8px;border:1px solid #ccdad6;border-radius:3px;background:#fff}
+.research-body{min-width:0}
+.research-figure{margin:23px 0 0}
+.research-figure img{display:block;width:100%;height:auto;background:white;border:1px solid var(--line);border-radius:4px}
+.research-figure a:focus-visible{display:block}
+figcaption{font-size:11px;line-height:1.65;color:var(--muted);margin-top:8px}
+.research-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,34%);gap:30px;align-items:start;margin-top:18px}
+.research-media .research-figure{margin:0}
+.research-media p,.detail-content p{font-size:14px;line-height:1.8}
+.work-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+.work-brief+.work-brief{margin-top:19px;padding-top:18px;border-top:1px solid var(--line)}
+.resource-links{display:flex;align-items:center;flex-wrap:wrap;gap:11px 20px;margin-top:18px}
+.resource-links a{font-size:12px;font-weight:600}
+.resource-links .button{padding:8px 12px}
+.project-details{margin-top:22px;border-top:1px solid #cfddd7;border-bottom:1px solid #cfddd7;scroll-margin-top:30px}
+.project-details summary{cursor:pointer;padding:14px 2px;font-size:13px;font-weight:600;color:var(--accent)}
+.project-details summary:hover{text-decoration:underline;text-underline-offset:4px}
+.project-details summary:focus-visible{outline:3px solid #b26a2c;outline-offset:3px}
+.detail-content{padding:2px 0 20px}
+.detail-content h4{margin:16px 0 7px}
+.detail-content h4:first-child{margin-top:0}
+.detail-content .contributions{font-size:13px}
+.citation-note{font-size:12px!important;color:var(--muted)}
+.simulation-video{width:100%;max-height:560px;background:#eef2f2;border:1px solid var(--line);border-radius:4px;display:block;margin-top:20px}
+.video-description{font-size:12px!important;color:var(--muted);margin-top:9px}
+.publication-resources{display:flex;gap:15px;flex-wrap:wrap;margin-top:7px;font-size:11px}
+.publication-copy h4 a{color:var(--ink)}
+.conference .inline-link{margin-top:12px}
+@media(max-width:900px){.research-media{grid-template-columns:minmax(0,1fr) 280px;gap:22px}}
+@media(max-width:680px){.profile-photo{width:154px;margin:0 0 16px}.academic-links{justify-content:flex-start;margin-bottom:20px}.research-media{grid-template-columns:1fr;gap:20px}.research-media .research-figure{max-width:480px}.research-media p,.detail-content p{font-size:13px}.research-figure{margin-top:18px}.research-item.featured{padding-inline:13px}.research-item.featured .research-index{display:none}.research-item.featured{grid-template-columns:1fr}.simulation-video{max-height:430px}.resource-links{gap:12px 16px}}
+@media print{.research-figure,.simulation-video,.video-description,.resource-links,.project-details,.publication-resources{display:none}.research-media{display:block}.work-brief+.work-brief{margin-top:10px;padding-top:10px}.research-body{break-inside:auto}}
+
+
+.project-jumps{display:flex;flex-wrap:wrap;gap:9px 22px;margin:-10px 0 27px;font-size:12px}
+.research-narrative p{font-size:14px;line-height:1.85;margin-top:14px}
+.research-narrative strong{font-weight:600;color:var(--ink)}
+.research-media .research-narrative p:first-child{margin-top:0}
+.project-papers{margin-top:24px;padding-top:1px;border-top:1px solid var(--line)}
+.project-papers .group-label{margin:16px 0 1px}
+.project-papers .publication-list li{padding-block:13px}
+.related-work-note{margin-top:16px;padding-top:3px;border-top:1px solid var(--line)}
+.related-work-note .group-label{margin:12px 0 8px}
+.related-work-note>p{font-size:12px;color:var(--muted)}
+@media(max-width:680px){.research-narrative p{font-size:13px}.project-jumps{font-size:11px;gap:10px 17px;margin-top:0}.publication-list li{gap:6px}.research-media .research-figure{max-width:400px}}
+@media print{.project-jumps{display:none}.project-papers{margin-top:12px}.project-papers .group-label{margin-top:8px}.research-narrative p{font-size:10pt}.publication-copy h4{font-size:10pt}}
+
+/* A fixed frame keeps the page still as the original figures rotate. */
+.research-gallery{min-width:0;width:100%}
+.gallery-stage{position:relative;width:100%;aspect-ratio:1/1;background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.gallery-slide{width:100%;height:100%}
+.gallery-slide[hidden],.gallery-controls[hidden]{display:none!important}
+.gallery-slide>a{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
+.gallery-slide img{width:100%;height:100%;object-fit:contain;padding:3px;border:0;border-radius:0}
+.gallery-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:9px}
+.gallery-buttons{display:flex;gap:6px;align-items:center}
+.gallery-buttons button{min-height:32px;min-width:32px;border:1px solid #ccd9d4;background:var(--paper);color:var(--accent);border-radius:4px;cursor:pointer;font-family:inherit;line-height:1}
+.gallery-buttons button:hover{background:var(--tint);border-color:var(--accent)}
+.gallery-buttons .gallery-previous,.gallery-buttons .gallery-next{font-size:21px}
+.gallery-buttons .gallery-toggle{font-size:11px;min-width:52px;padding:0 10px}
+.gallery-count{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.research-gallery figcaption{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:8px}
+.gallery-enlarge{white-space:nowrap;font-size:10px}
+@media(max-width:680px){.gallery-buttons button{min-width:40px;min-height:40px}.research-gallery figcaption{font-size:11px}}
+@media print{.research-gallery{display:none}}
+
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="#about" aria-label="Zishuo Lin, home">Zishuo Lin<span aria-hidden="true">.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#research">Research</a>
+        <a href="#contact">Contact</a>
+        <a href="#background">Background</a>
+        <button class="nav-cv" type="button" onclick="window.print()">Print CV <span aria-hidden="true">↗</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- EDIT: Introduction and profile links -->
+    <section id="about" class="hero section-wrap" aria-labelledby="name">
+      <div class="hero-main">
+        <p class="eyebrow">Fluid mechanics · Scientific computing</p>
+        <h1 id="name">Zishuo Lin</h1>
+        <p class="affiliation">MSc student · Imperial College London</p>
+        <p class="intro">I combine physics, computation and observations to understand transport in complex flows.</p>
+        <p class="bio">My research has progressed from particle transport and heat transfer in industrial equipment to reconstructing turbulent flows from sparse observations. I am interested in how geometry, scale and boundary conditions shape flow behavior, and in identifying the physical mechanisms behind these changes.</p>
+        <div class="profile-links">
+          <a class="button primary" href="mailto:zishuo.lin26@imperial.ac.uk">Get in touch <span aria-hidden="true">↗</span></a>
+          <button class="text-link print-cv" type="button" onclick="window.print()">Print / save CV <span aria-hidden="true">↓</span></button>
+
+        </div>
+      </div>
+      <aside class="focus-panel" aria-labelledby="focus-title">
+        <!-- EDIT: Replace portrait.jpg to update the photograph. -->
+        <img class="profile-photo" src="portrait.jpg" alt="Portrait of Zishuo Lin" width="1279" height="1672" fetchpriority="high">
+        <div class="academic-links" aria-label="Academic profiles">
+          <a href="https://scholar.google.com/citations?user=_voI3dQAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+          <a href="https://orcid.org/0009-0002-5693-3558" target="_blank" rel="noopener noreferrer">ORCID ↗</a>
+          <a href="https://github.com/kresslesslin" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+        <p class="eyebrow" id="focus-title">Research interests</p>
+        <ul>
+          <li>Flow reconstruction &amp; data assimilation</li>
+          <li>Scientific machine learning</li>
+          <li>Multiphase flow &amp; heat transfer</li>
+          <li>Experimental fluid mechanics &amp; PIV</li>
+        </ul>
+        <p class="location"><span aria-hidden="true">●</span> London, United Kingdom</p>
+      </aside>
+    </section>
+
+    <!-- EDIT: Research summaries, original figures, and downloadable materials. -->
+    <section id="research" class="section-wrap content-section" aria-labelledby="research-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">Selected work</p><h2 id="research-title">Research</h2></div>
+        <p>Research questions, my contributions, and the papers and materials behind each project.</p>
+      </div>
+      <div class="project-jumps" aria-label="Research project shortcuts"><a href="#codil">01 · C-ODIL</a><a href="#rotary-kiln">02 · Rotary kilns</a><a href="#pneumatic-drying">03 · Pneumatic drying</a></div>
+      <article class="research-item featured" id="codil">
+        <div class="research-index" aria-hidden="true">01</div>
+        <div class="research-body">
+          <div class="research-topline"><span class="tag">Current research</span><span class="date">2025–2026</span></div>
+          <h3>C-ODIL: turbulent flow reconstruction</h3>
+          <p class="research-context">Research collaboration with Johns Hopkins University and the University of Michigan</p>
+          <div class="research-narrative">
+            <p><strong>Research question.</strong> Sparse measurements rarely capture a complete turbulent flow. I investigate how governing equations and noisy observations can be combined to reconstruct its evolving state efficiently.</p>
+            <p><strong>My contribution.</strong> I designed and implemented the C-ODIL framework and carried out its theoretical and numerical validation. The method reorganizes the solution around time evolution, alternating physics-based forecasts with observation corrections instead of optimizing an entire space–time trajectory at once.</p>
+            <p><strong>Results and ongoing work.</strong> Validation spans Kuramoto–Sivashinsky, Burgers and three-dimensional Kolmogorov flows, including a 256<sup>3</sup> reconstruction. Extensions investigate lightweight neural modules for missing information and Bayesian prior specifications for reconstruction and uncertainty quantification.</p>
+          </div>
+          <figure class="research-figure">
+            <a href="codil-kolmogorov.png" target="_blank" rel="noopener" aria-label="Open the full-size 3D Kolmogorov reconstruction figure">
+              <img src="codil-kolmogorov.png" alt="3D Kolmogorov flow: reference and C-ODIL pressure, speed and vorticity fields, with energy spectrum, kinetic energy and enstrophy comparisons." width="2001" height="966" loading="lazy">
+            </a>
+            <figcaption>3D Kolmogorov flow on a 256<sup>3</sup> grid: reconstructed fields and physical statistics. Original figure extracted from the research poster; click to enlarge.</figcaption>
+          </figure>
+          <div class="resource-links">
+            <a class="button primary" href="C-ODIL-Poster.pdf" target="_blank" rel="noopener">View full poster (PDF) ↗</a>
+            <a href="C-ODIL-Poster.pdf" download>Download poster ↓</a>
+          </div>
+
+          <div class="project-papers"><h4 class="group-label">Papers &amp; poster</h4><ol class="publication-list">
+            <li id="codil-paper"><div class="publication-copy"><h4>Efficient Reconstruction of Turbulent Flows from Sparse and Noisy Observations via Optimizing a Discrete Loss</h4><p><strong>Lin, Z.</strong>, et al.</p><div class="publication-resources"><a href="C-ODIL-Poster.pdf" target="_blank" rel="noopener">Poster (PDF) ↗</a></div></div><span class="status">In preparation</span></li>
+            <li><div class="publication-copy"><h4>Bayesian C-ODIL for Uncertainty Quantification in Flow Reconstruction</h4><p>Shao, X., <strong>Lin, Z.</strong>, et al.</p></div><span class="status">In preparation</span></li>
+          </ol></div>
+          <details class="project-details" id="codil-details">
+            <summary>Method &amp; benchmark details</summary>
+            <div class="detail-content">
+              <h4>A causal approach to reconstruction</h4>
+              <p>C-ODIL advances discrete governing equations through sequential forecasts and observation corrections. The same discrete physics formulation supports forward simulation and inverse reconstruction from sparse measurements.</p>
+              <p>The poster includes tests on Kuramoto–Sivashinsky, Burgers and three-dimensional Navier–Stokes equations, together with neural-network-assisted identification of a hidden PDE term.</p>
+              <h4>The 3D example shown above</h4>
+              <p>The field reconstruction uses a 256<sup>3</sup> periodic Kolmogorov-flow reference, 2,000 observations and noise level σ = 0.01. This specific poster case uses a fixed Matérn background covariance and reports a trajectory velocity error of 5.40%. The full poster gives the settings, comparisons and sensitivity studies.</p>
+
+            </div>
+          </details>
+          <p class="advisor">Advisors: Dr. Shuolin Xiao (Johns Hopkins University) and Dr. Yifan Du (University of Michigan)</p>
+          <div class="topic-list" aria-label="Research topics"><span>Data assimilation</span><span>Inverse problems</span><span>Physics–AI integration</span></div>
+        </div>
+      </article>
+
+      <article class="research-item" id="rotary-kiln">
+        <div class="research-index" aria-hidden="true">02</div>
+        <div class="research-body">
+          <div class="research-topline"><span class="institution">Hefei University of Technology</span><span class="date">2022–2025</span></div>
+          <h3>Particle transport &amp; heat transfer in rotary kilns</h3>
+          <div class="research-narrative">
+            <p><strong>Research question.</strong> How do internal baffles change particle motion and heat transfer, and how can these mechanisms guide kiln design? These studies connect particle-scale behavior with equipment performance, motivated by particulate processing and battery-material recycling.</p>
+            <p><strong>My contribution.</strong> For the ongoing CFD–DEM study, I led the project team and planned the comparative simulations, developing models to evaluate how kiln geometry and operating conditions influence particle transport and thermal behavior.</p>
+          </div>
+          <div class="research-media">
+            <div>
+              <div class="work-brief">
+                <div class="work-label">Study 1 · DEM · Published</div>
+                <h4>Baffle-enhanced heat-transfer mechanisms</h4>
+                <p>The published DEM study identifies enhanced particle contact with the heated shell as the main mechanism behind baffle-enhanced heat transfer.</p>
+
+              </div>
+              <div class="work-brief">
+                <div class="work-label">Study 2 · CFD–DEM · In preparation</div>
+                <h4>Coupled simulation &amp; sequential optimization</h4>
+                <p>Coupled CFD–DEM simulations compare kiln configurations and operating conditions to study particle transport and thermal behavior. This ongoing work examines baffle geometry, rotational speed and particle properties.</p>
+              </div>
+            </div>
+            <!-- EDIT: Add or replace an original image in this five-slide gallery. -->
+            <figure class="research-figure research-gallery" id="kiln-gallery" data-gallery role="region" aria-roledescription="carousel" aria-label="Rotary-kiln simulation gallery">
+              <div class="gallery-stage">
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 5" data-title="CFD–DEM model overview">
+                  <a href="rotary-kiln-cfd-dem.png" target="_blank" rel="noopener" aria-label="Open full-size cfd–dem model overview"><img src="rotary-kiln-cfd-dem.png" alt="Rotary-kiln geometry, baffles and model parameters." width="851" height="853" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 5" data-title="Temperature fields" hidden>
+                  <a href="kiln-temperature-fields.jpg" target="_blank" rel="noopener" aria-label="Open full-size temperature fields"><img src="kiln-temperature-fields.jpg" alt="Temperature fields and particle temperatures in the kiln, shown from two axial directions and a sectional view." width="1651" height="973" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 5" data-title="Particle-temperature comparison" hidden>
+                  <a href="kiln-particle-temperature.png" target="_blank" rel="noopener" aria-label="Open full-size particle-temperature comparison"><img src="kiln-particle-temperature.png" alt="Nine particle-temperature distributions comparing rotary-kiln configurations, with the original temperature color scale." width="2048" height="1643" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 5" data-title="Contact-area comparison" hidden>
+                  <a href="kiln-contact-area.png" target="_blank" rel="noopener" aria-label="Open full-size contact-area comparison"><img src="kiln-contact-area.png" alt="Particle contact area relative to wall area for RSM cases, including two magnified comparison plots." width="2008" height="1537" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="5 of 5" data-title="DEM / CFD–DEM comparison" hidden>
+                  <a href="kiln-model-validation.jpg" target="_blank" rel="noopener" aria-label="Open full-size dem / cfd–dem comparison"><img src="kiln-model-validation.jpg" alt="DEM and CFD–DEM temperature predictions compared with experimental data from Chaudhuri et al., 2010." width="1580" height="1280" loading="lazy"></a>
+                </div>
+              </div>
+              <div class="gallery-controls" hidden>
+                <div class="gallery-buttons">
+                  <button type="button" class="gallery-previous" aria-label="Previous kiln figure">‹</button>
+                  <button type="button" class="gallery-toggle" aria-label="Pause automatic slideshow">Pause</button>
+                  <button type="button" class="gallery-next" aria-label="Next kiln figure">›</button>
+                </div>
+                <span class="gallery-count" aria-label="Figure 1 of 5">1 / 5</span>
+              </div>
+              <figcaption><span class="gallery-caption">CFD–DEM model overview</span><a class="gallery-enlarge" href="rotary-kiln-cfd-dem.png" target="_blank" rel="noopener">Enlarge ↗</a></figcaption>
+            </figure>
+          </div>
+
+          <div class="project-papers"><h4 class="group-label">Two related papers</h4><ol class="publication-list">
+            <li><div class="publication-copy"><h4><a href="https://doi.org/10.1016/j.applthermaleng.2025.125452" target="_blank" rel="noopener noreferrer">Revealing baffle-enhanced heat transfer mechanism in an indirectly heated rotary kiln by discrete element method modeling</a></h4><p>Qi, F., Zhang, C., Cai, H., <strong>Lin, Z.</strong>, Diao, R., Liu, X., Yan, D., Jiang, L., &amp; Ma, P.</p><p class="journal">Applied Thermal Engineering, 266 (2025), 125452</p><div class="publication-resources"><a href="https://doi.org/10.1016/j.applthermaleng.2025.125452" target="_blank" rel="noopener noreferrer">DOI ↗</a></div></div><span class="status published">Published</span></li>
+            <li><div class="publication-copy"><h4>CFD–DEM Simulation and Sequential Optimization for Enhanced Heat Transfer in a Baffled Rotary Kiln</h4><p><strong>Lin, Z.</strong>, et al.</p></div><span class="status">In preparation</span></li>
+          </ol></div>
+          <details class="project-details" id="kiln-details">
+            <summary>CFD–DEM comparisons &amp; original project figure</summary>
+            <div class="detail-content">
+              <p>The figure above belongs to the second, ongoing CFD–DEM study. It summarizes the kiln model and comparisons involving baffle area, angle, length and number, rotational speed and particle size.</p>
+              <p>These comparisons examine how design and operating choices influence transport and heat transfer, providing a basis for sequential optimization of the kiln configuration.</p>
+              <div class="resource-links"><a href="research-overview.png" target="_blank" rel="noopener">View original project slide ↗</a></div>
+            </div>
+          </details>
+          <p class="advisor">Advisors: Associate Professor Fenglei Qi and Professor Peiyong Ma</p>
+          <div class="topic-list" aria-label="Research topics"><span>DEM</span><span>CFD–DEM</span><span>Heat transfer</span><span>Design optimization</span></div>
+        </div>
+      </article>
+
+      <article class="research-item" id="pneumatic-drying">
+        <div class="research-index" aria-hidden="true">03</div>
+        <div class="research-body">
+          <div class="research-topline"><span class="institution">Hefei University of Technology</span><span class="date">2022–2025</span></div>
+          <h3>Multiphase flow &amp; pneumatic drying</h3>
+          <div class="research-media">
+            <div>
+              <div class="research-narrative">
+                <p><strong>Research question.</strong> Particle clustering can lead to uneven drying. I study how particle drag, internal flow structures and equipment geometry affect the transport and distribution of filamentous particles.</p>
+                <p><strong>My contribution.</strong> I developed drag-model descriptions for filamentous particles and contributed to the improvement of pneumatic drying equipment, combining numerical modeling with comparisons of flow-control and geometry choices.</p>
+                <p><strong>Research outputs.</strong> The work includes DNS-based drag-model studies and vortex-field control for more uniform particle distributions. The figure and CFD–DEM video below show the tobacco-drying application.</p>
+              </div>
+            </div>
+            <!-- EDIT: Pneumatic-drying images rotate here; the video remains below. -->
+            <figure class="research-figure research-gallery" id="drying-gallery" data-gallery role="region" aria-roledescription="carousel" aria-label="Pneumatic-drying image gallery">
+              <div class="gallery-stage">
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="1 of 5" data-title="Pneumatic-drying overview">
+                  <a href="pneumatic-drying-overview.png" target="_blank" rel="noopener" aria-label="Open full-size pneumatic-drying overview"><img src="pneumatic-drying-overview.png" alt="Drying equipment, flow simulation and geometry comparisons." width="965" height="853" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="2 of 5" data-title="Industrial drying equipment" hidden>
+                  <a href="drying-equipment-photos.png" target="_blank" rel="noopener" aria-label="Open full-size industrial drying equipment"><img src="drying-equipment-photos.png" alt="Photographs of the industrial tobacco drying equipment and a site visit." width="815" height="377" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="3 of 5" data-title="Velocity-field comparison" hidden>
+                  <a href="drying-velocity-fields.png" target="_blank" rel="noopener" aria-label="Open full-size velocity-field comparison"><img src="drying-velocity-fields.png" alt="Velocity-magnitude contours in several pneumatic-dryer sections and a three-dimensional sectional view." width="1916" height="863" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="4 of 5" data-title="Geometry &amp; particle trajectories" hidden>
+                  <a href="drying-geometry-comparison.png" target="_blank" rel="noopener" aria-label="Open full-size geometry &amp; particle trajectories"><img src="drying-geometry-comparison.png" alt="H40-L800 and H400-L800 configurations compared using velocity contours and particle residence-time trajectories." width="1440" height="674" loading="lazy"></a>
+                </div>
+                <div class="gallery-slide" role="group" aria-roledescription="slide" aria-label="5 of 5" data-title="Particle residence-time distributions" hidden>
+                  <a href="drying-residence-time.png" target="_blank" rel="noopener" aria-label="Open full-size particle residence-time distributions"><img src="drying-residence-time.png" alt="Parcel-mass percentage versus time for seven labeled simulation cases." width="686" height="525" loading="lazy"></a>
+                </div>
+              </div>
+              <div class="gallery-controls" hidden>
+                <div class="gallery-buttons">
+                  <button type="button" class="gallery-previous" aria-label="Previous drying figure">‹</button>
+                  <button type="button" class="gallery-toggle" aria-label="Pause automatic slideshow">Pause</button>
+                  <button type="button" class="gallery-next" aria-label="Next drying figure">›</button>
+                </div>
+                <span class="gallery-count" aria-label="Figure 1 of 5">1 / 5</span>
+              </div>
+              <figcaption><span class="gallery-caption">Pneumatic-drying overview</span><a class="gallery-enlarge" href="pneumatic-drying-overview.png" target="_blank" rel="noopener">Enlarge ↗</a></figcaption>
+            </figure>
+          </div>
+          <!-- EDIT: Replace pneumatic-drying.mp4 to update the simulation video. -->
+          <video class="simulation-video" controls loop playsinline preload="metadata" aria-label="CFD–DEM simulation of tobacco particle transport in a pneumatic dryer" aria-describedby="drying-video-caption">
+            <source src="pneumatic-drying.mp4" type="video/mp4">
+            Your browser does not support embedded video. <a href="pneumatic-drying.mp4">Open the simulation video</a>.
+          </video>
+          <p class="video-description" id="drying-video-caption">CFD–DEM simulation of particle transport in the tobacco drying system. Use the player controls to play or pause the original simulation video.</p>
+          <div class="resource-links"><a href="pneumatic-drying.mp4" target="_blank" rel="noopener">Open video ↗</a><a href="pneumatic-drying.mp4" download>Download video ↓</a></div>
+
+          <div class="project-papers"><h4 class="group-label">Papers</h4><ol class="publication-list">
+            <li><div class="publication-copy"><h4>Enhancing Particle Distribution Uniformity in a Pneumatic Dryer through Vortex Field Control</h4><p>Co-author</p></div><span class="status">Under review</span></li>
+            <li><div class="publication-copy"><h4>Investigation of Drag Models for Filamentous Particles via Direct Numerical Simulation</h4><p>Co-author</p></div><span class="status">Under review</span></li>
+          </ol></div>
+          <div class="related-work-note"><h4 class="group-label">Related work · AI for process optimization</h4><p>Alongside the particle-transport studies, my first-authored work considers artificial intelligence and machine learning for chemical-process optimization.</p><ol class="publication-list"><li><div class="publication-copy"><h4>Exploring the Role of Artificial Intelligence and Machine Learning in Process Optimization for Chemical Industry</h4><p><strong>Lin, Z.</strong>, et al.</p><p class="journal">Journal of Cheminformatics</p></div><span class="status accepted">Accepted</span></li></ol></div>
+          <details class="project-details" id="drying-details">
+            <summary>Modeling approach &amp; original project figure</summary>
+            <div class="detail-content">
+              <p>The drag-model work examines particle-scale fluid forces, while the equipment study considers how flow structures and geometry redistribute particles. These complementary scales connect model assumptions with the behavior of the full drying system.</p>
+              <p>The project overview combines equipment photographs, CFD particle trajectories and alternative dryer configurations. The video shows the coupled CFD–DEM simulation.</p>
+              <div class="resource-links"><a href="research-overview.png" target="_blank" rel="noopener">View original project slide ↗</a></div>
+            </div>
+          </details>
+          <p class="advisor">Advisors: Associate Professor Fenglei Qi and Professor Peiyong Ma</p>
+          <div class="topic-list" aria-label="Research topics"><span>Multiphase flow</span><span>CFD–DEM</span><span>DNS</span><span>Process optimization</span></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- EDIT: Education, presentations, and other CV details -->
+    <section id="background" class="section-wrap content-section" aria-labelledby="background-title">
+      <div class="section-heading"><div><p class="eyebrow">Academic background</p><h2 id="background-title">Education &amp; experience</h2></div></div>
+      <div class="background-grid">
+        <div>
+          <h3 class="group-label">Education</h3>
+          <div class="education-item"><p class="date">2026–2027 · Expected</p><h4>Imperial College London</h4><p>MSc in Engineering Fluid Mechanics for the Offshore, Coastal and Built Environments</p></div>
+          <div class="education-item"><p class="date">2021–2025</p><h4>Hefei University of Technology</h4><p>BEng in Mechanical Engineering</p></div>
+          <h3 class="group-label">Tools &amp; methods</h3>
+          <dl class="skills-list">
+            <div><dt>Programming</dt><dd>Python, MATLAB</dd></div>
+            <div><dt>Simulation</dt><dd>ANSYS Fluent, STAR-CCM+, EDEM, CFD–DEM</dd></div>
+            <div><dt>Research</dt><dd>Data assimilation, numerical methods, hydrodynamic flume experiments</dd></div>
+            <div><dt>Design</dt><dd>SolidWorks, AutoCAD</dd></div>
+          </dl>
+        </div>
+        <div>
+          <h3 class="group-label">Conference presentations</h3>
+          <div class="conference">
+            <div class="research-topline"><span class="institution">APS DFD 2026</span><span class="status accepted">Poster accepted</span></div>
+            <h4>Efficient Reconstruction of Turbulent Flows from Sparse and Noisy Observations via Optimizing a Discrete Loss</h4>
+            <p>79th Annual Meeting of the APS Division of Fluid Dynamics<br>Orlando, Florida · November 2026</p>
+            <a class="inline-link" href="C-ODIL-Poster.pdf" target="_blank" rel="noopener">View poster (PDF) ↗</a>
+          </div>
+          <h3 class="group-label">Service &amp; recognition</h3>
+          <ul class="compact-list">
+            <li><strong>Ad hoc reviewer, Physics of Fluids (AIP Publishing)</strong><span>2024–present · 8 peer-review reports completed</span></li>
+            <li><strong>National Third Prize</strong><span>China International College Students’ Innovation Competition · 2024</span></li>
+          </ul>
+          <h3 class="group-label">Industry experience</h3>
+          <ul class="compact-list">
+            <li><strong>Hainan Junda New Energy Technology</strong><span>Production Intern · January–February 2024</span></li>
+            <li><strong>Jiangxi Geely New Energy Commercial Vehicle</strong><span>Engineering Intern · July–August 2023</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="contact section-wrap" id="contact" aria-labelledby="contact-title">
+      <div><p class="eyebrow">Contact</p><h2 id="contact-title">Let’s talk research.</h2><p>Fluid mechanics, scientific computing, and research opportunities.</p></div>
+      <a class="contact-email" href="mailto:zishuo.lin26@imperial.ac.uk">zishuo.lin26@imperial.ac.uk <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+  <footer class="site-footer section-wrap"><p>© 2026 Zishuo Lin</p><p>Updated 17 November 2026</p><a href="#about">Back to top ↑</a></footer>
+  <script>
+    function openLinkedDetails() {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      const target = document.getElementById(id);
+      if (target && target.tagName === 'DETAILS') target.open = true;
+    }
+    window.addEventListener('hashchange', openLinkedDetails);
+    document.addEventListener('click', function (event) {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      const target = document.getElementById(link.getAttribute('href').slice(1));
+      if (target && target.tagName === 'DETAILS') target.open = true;
+    });
+    openLinkedDetails();
+
+    // Small, dependency-free carousel. It rotates only while visible.
+    document.querySelectorAll('[data-gallery]').forEach(gallery => {
+      const slides = [...gallery.querySelectorAll('.gallery-slide')];
+      const controls = gallery.querySelector('.gallery-controls');
+      const toggle = gallery.querySelector('.gallery-toggle');
+      const count = gallery.querySelector('.gallery-count');
+      const caption = gallery.querySelector('.gallery-caption');
+      const enlarge = gallery.querySelector('.gallery-enlarge');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      let current = 0;
+      let userPaused = reducedMotion.matches;
+      let hovered = false;
+      let focusPaused = false;
+      let onScreen = false;
+      let timer = null;
+
+      function show(index) {
+        current = (index + slides.length) % slides.length;
+        slides.forEach((slide, n) => { slide.hidden = n !== current; });
+        const selected = slides[current];
+        count.textContent = `${current + 1} / ${slides.length}`;
+        count.setAttribute('aria-label', `Figure ${current + 1} of ${slides.length}`);
+        caption.textContent = selected.dataset.title;
+        enlarge.href = selected.querySelector('a').href;
+      }
+      function updateRotation() {
+        if (timer !== null) { window.clearInterval(timer); timer = null; }
+        toggle.textContent = userPaused ? 'Play' : 'Pause';
+        toggle.setAttribute('aria-label', userPaused ? 'Start automatic slideshow' : 'Pause automatic slideshow');
+        if (!userPaused && !hovered && !focusPaused && onScreen && !document.hidden) {
+          timer = window.setInterval(() => show(current + 1), 5000);
+        }
+      }
+      function selectManually(index) {
+        userPaused = true;
+        show(index);
+        updateRotation();
+      }
+      gallery.querySelector('.gallery-previous').addEventListener('click', () => selectManually(current - 1));
+      gallery.querySelector('.gallery-next').addEventListener('click', () => selectManually(current + 1));
+      toggle.addEventListener('click', () => {
+        userPaused = !userPaused;
+        if (!userPaused) focusPaused = false;
+        updateRotation();
+      });
+      gallery.addEventListener('mouseenter', () => { hovered = true; updateRotation(); });
+      gallery.addEventListener('mouseleave', () => { hovered = false; updateRotation(); });
+      gallery.addEventListener('focusin', () => { focusPaused = true; updateRotation(); });
+      gallery.addEventListener('focusout', event => {
+        if (!gallery.contains(event.relatedTarget)) { focusPaused = false; updateRotation(); }
+      });
+      gallery.addEventListener('keydown', event => {
+        if (event.altKey || event.ctrlKey || event.metaKey) return;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          selectManually(current + (event.key === 'ArrowRight' ? 1 : -1));
+        }
+      });
+      document.addEventListener('visibilitychange', updateRotation);
+      reducedMotion.addEventListener('change', event => {
+        if (event.matches) userPaused = true;
+        updateRotation();
+      });
+      controls.hidden = false;
+      show(0);
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(entries => {
+          onScreen = entries[0].isIntersecting;
+          updateRotation();
+        }, { threshold: 0.2 }).observe(gallery);
+      } else {
+        onScreen = true;
+        updateRotation();
+      }
+    });
+
+  </script>
+</body>
+</html>
+
+
